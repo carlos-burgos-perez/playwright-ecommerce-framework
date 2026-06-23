@@ -30,11 +30,8 @@ test.describe('Authentication', () => {
     test ('should not login with invalid credentials', async ({ page }) => {
 
         const loginPage = new LoginPage(page);
-        const cookieBanner = new CookieBanner(page);
 
-        await loginPage.navigate();
-
-        await cookieBanner.acceptCookies();
+        await loginPage.navigate();     
 
         await loginPage.login(
             users.invalidUser.email,
@@ -48,11 +45,8 @@ test.describe('Authentication', () => {
     test('should login successfully with valid credentials', async ({ page }) => {
 
         const loginPage = new LoginPage(page);
-        const cookieBanner = new CookieBanner(page);
 
         await loginPage.navigate();
-
-        await cookieBanner.acceptCookies();
 
         await loginPage.login(
             users.validUser.email,
@@ -68,13 +62,10 @@ test.describe('Authentication', () => {
 
         const loginPage = new LoginPage(page);
         const signupPage = new SignupPage(page);
-        const cookieBanner = new CookieBanner(page);
 
         const email = `qa${Date.now()}@test.com`;
 
         await loginPage.navigate();
-
-        await cookieBanner.acceptCookies();
 
         await signupPage.startSignup(
             users.newUser.name,

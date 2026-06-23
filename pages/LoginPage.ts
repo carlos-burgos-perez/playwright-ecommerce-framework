@@ -1,6 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 
-export class LoginPage {
+import { BasePage } from './BasePage';
+export class LoginPage extends BasePage {
 
     readonly page: Page;
 
@@ -10,9 +11,10 @@ export class LoginPage {
     readonly errorMessage: Locator;
     readonly loginTitle: Locator;
     readonly loggedInUser: Locator;
-    
+
     constructor(page: Page) {
 
+        super(page);
         this.page = page;
         
 
@@ -26,6 +28,7 @@ export class LoginPage {
 
     async navigate() {
         await this.page.goto('https://automationexercise.com/login');
+        await this.acceptCookies();
     }
 
     async login(
