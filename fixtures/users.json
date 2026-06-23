@@ -1,0 +1,13 @@
+{
+    "validUser": {
+        "email": "playwrightframework@email.com",
+        "password": "JX@U@r86wMNhR2Z"
+    },
+    "invalidUser": {
+        "email": "fake@email.com",
+        "password": "wrongpassword"
+    },
+    "newUser": {
+        "name": "QA User"
+    }
+}
