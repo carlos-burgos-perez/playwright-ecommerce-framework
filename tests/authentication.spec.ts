@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-import users from '../../fixtures/users.json';
+import users from '../fixtures/users.json';
 
-import { LoginPage } from '../../pages/LoginPage';
-import { HomePage } from '../../pages/HomePage';
-import { CookieBanner } from '../../pages/components/CookieBanner';
-import { SignupPage } from '../../pages/SignupPage';
+import { LoginPage } from '../pages/LoginPage';
+import { HomePage } from '../pages/HomePage';
+import { CookieBanner } from '../pages/components/CookieBanner';
+import { SignupPage } from '../pages/SignupPage';
 
 test.describe('Authentication', () => {
 
