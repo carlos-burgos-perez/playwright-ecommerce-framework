@@ -8,6 +8,8 @@ export class ProductsPage extends BasePage {
     readonly productsTitle: Locator;
     readonly productCards: Locator;
     readonly viewProductButton: Locator;
+    readonly addToCartButton: Locator;
+    readonly continueShoppingButton: Locator;
 
     constructor(page: Page) {
 
@@ -17,6 +19,9 @@ export class ProductsPage extends BasePage {
         this.productsTitle = page.getByText('All Products');
         this.productCards = page.locator('.features_items .product-image-wrapper');
         this.viewProductButton = page.locator('a[href*="/product_details/"]').first();
+        this.addToCartButton = page.locator('a[data-product-id]').first();
+        this.continueShoppingButton = page.getByRole('button', { name: 'Continue Shopping' });
+        
     }
 
     async navigate() {
@@ -41,4 +46,14 @@ export class ProductsPage extends BasePage {
 
         await this.viewProductButton.click();   
     }
+
+    async addToCartFirstProduct() {
+        await this.productCards.first().hover();
+        await this.addToCartButton.first().click();
+    }
+
+    async closeAddToCartModal() {
+        await this.continueShoppingButton.click();
+    }
+
 }
