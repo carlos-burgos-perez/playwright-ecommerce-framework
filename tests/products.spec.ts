@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 import { ProductsPage } from '../pages/ProductsPage';
+import { ProductDetailsPage } from '../pages/ProductDetailsPage';
 
 test.describe('Products Page', () => {
 
@@ -33,6 +34,20 @@ test.describe('Products Page', () => {
         expect(
             await productsPage.hasProducts()
         ).toBeTruthy();
+    });
+
+    test('should open product details page when clicking on a product', async ({ page }) => {
+
+        const productsPage = new ProductsPage(page);
+
+        const productDetailsPage = new ProductDetailsPage(page);
+
+        await productsPage.navigate();
+
+        await productsPage.openFirstProduct();
+
+        await expect(productDetailsPage.productName).toBeVisible();
+
     });
 
 });

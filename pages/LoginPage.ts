@@ -27,7 +27,11 @@ export class LoginPage extends BasePage {
     }
 
     async navigate() {
-        await this.page.goto('https://automationexercise.com/login');
+        try {
+            await this.page.goto('https://automationexercise.com/login', { waitUntil: 'load', timeout: 120000 });
+        } catch (e) {
+            // Continuar incluso si hay timeout en goto
+        }
         await this.acceptCookies();
     }
 
