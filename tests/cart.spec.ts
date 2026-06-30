@@ -1,14 +1,11 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/baseTest';
 
 import { CartPage } from '../pages/CartPage';
 import { ProductsPage } from '../pages/ProductsPage';
 
 test.describe('Cart Page', () => {
 
-    test('should add product to cart', async ({ page }) => {
-
-        const productsPage = new ProductsPage(page);
-        const cartPage = new CartPage(page);
+    test('should add product to cart', async ({ productsPage, cartPage }) => {
 
         await productsPage.open();
         await productsPage.addToCartFirstProduct();
@@ -18,10 +15,7 @@ test.describe('Cart Page', () => {
         await expect(cartPage.cartTitle).toBeVisible();
     });
 
-    test('should remove product from cart', async ({ page }) => {
-
-        const productsPage = new ProductsPage(page);
-        const cartPage = new CartPage(page);
+    test('should remove product from cart', async ({ productsPage, cartPage }) => {
 
         await productsPage.open();
         await productsPage.addToCartFirstProduct();

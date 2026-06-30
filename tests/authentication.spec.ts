@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/baseTest';
 
 import users from '../fixtures/users.json';
 
@@ -9,27 +9,21 @@ import { SignupPage } from '../pages/SignupPage';
 
 test.describe('Authentication', () => {
 
-    test('should navigate to login page', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
+    test('should navigate to login page', async ({ page, loginPage }) => {
 
         await loginPage.open();
 
         await expect(page).toHaveURL(/\/login/);
     });
 
-    test('should display login form', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
+    test('should display login form', async ({ loginPage }) => {
 
         await loginPage.open();
 
         await expect(loginPage.loginTitle).toBeVisible();
     });
 
-    test ('should not login with invalid credentials', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
+    test ('should not login with invalid credentials', async ({ page, loginPage }) => {
 
         await loginPage.open();     
 
@@ -42,9 +36,7 @@ test.describe('Authentication', () => {
         await expect(loginPage.errorMessage).toBeVisible();
     });
 
-    test('should login successfully with valid credentials', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
+    test('should login successfully with valid credentials', async ({ page, loginPage }) => {
 
         await loginPage.open();
 
@@ -58,10 +50,7 @@ test.describe('Authentication', () => {
 
     })
 
-    test('should register a new user successfully', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
-        const signupPage = new SignupPage(page);
+    test('should register a new user successfully', async ({ page, loginPage, signupPage }) => {
 
         const email = `qa${Date.now()}@test.com`;
 

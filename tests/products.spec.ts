@@ -1,31 +1,25 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures/baseTest';
 
 import { ProductsPage } from '../pages/ProductsPage';
 import { ProductDetailsPage } from '../pages/ProductDetailsPage';
 
 test.describe('Products Page', () => {
 
-    test('should navigate to products page', async ({ page }) => {
-
-        const productsPage = new ProductsPage(page);
+    test('should navigate to products page', async ({ productsPage }) => {
 
         await productsPage.open();
 
         await expect(productsPage.productsTitle).toBeVisible();
     });
 
-    test('should display products', async ({ page }) => {
-
-        const productsPage = new ProductsPage(page);
+    test('should display products', async ({ productsPage }) => {
 
         await productsPage.open();
 
         await expect(productsPage.productCards.first()).toBeVisible();
     });
 
-    test('should display products list', async ({ page }) => {
-
-        const productsPage = new ProductsPage(page);
+    test('should display products list', async ({ productsPage }) => {
 
         await productsPage.open();
 
@@ -36,11 +30,7 @@ test.describe('Products Page', () => {
         ).toBeTruthy();
     });
 
-    test('should open product details page when clicking on a product', async ({ page }) => {
-
-        const productsPage = new ProductsPage(page);
-
-        const productDetailsPage = new ProductDetailsPage(page);
+    test('should open product details page when clicking on a product', async ({ productsPage, productDetailsPage }) => {
 
         await productsPage.open();
 

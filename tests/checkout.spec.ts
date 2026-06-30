@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test } from '../fixtures/baseTest';
 
 import users from '../fixtures/users.json';
 
@@ -9,12 +9,7 @@ import { CheckoutPage } from '../pages/CheckoutPage';
 
 test.describe('Checkout', () => {
 
-    test ('should navigate successfully to checkout', async ({ page }) => {
-
-        const loginPage = new LoginPage(page);
-        const productsPage = new ProductsPage(page);
-        const cartPage = new CartPage(page);
-        const checkoutPage = new CheckoutPage(page);
+    test ('should navigate successfully to checkout', async ({ loginPage, productsPage, cartPage, checkoutPage }) => {
 
         await loginPage.open();
         await loginPage.login(users.validUser.email, users.validUser.password);
