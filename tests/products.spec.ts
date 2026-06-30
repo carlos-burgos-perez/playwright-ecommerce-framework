@@ -9,7 +9,7 @@ test.describe('Products Page', () => {
 
         const productsPage = new ProductsPage(page);
 
-        await productsPage.navigate();
+        await productsPage.open();
 
         await expect(productsPage.productsTitle).toBeVisible();
     });
@@ -18,7 +18,7 @@ test.describe('Products Page', () => {
 
         const productsPage = new ProductsPage(page);
 
-        await productsPage.navigate();
+        await productsPage.open();
 
         await expect(productsPage.productCards.first()).toBeVisible();
     });
@@ -27,7 +27,7 @@ test.describe('Products Page', () => {
 
         const productsPage = new ProductsPage(page);
 
-        await productsPage.navigate();
+        await productsPage.open();
 
         const hasProducts = await productsPage.hasProducts();
 
@@ -42,7 +42,7 @@ test.describe('Products Page', () => {
 
         const productDetailsPage = new ProductDetailsPage(page);
 
-        await productsPage.navigate();
+        await productsPage.open();
 
         await productsPage.openFirstProduct();
 

@@ -26,13 +26,16 @@ export class LoginPage extends BasePage {
         this.loggedInUser = page.getByText('Logged in as');
     }
 
-    async navigate() {
-        try {
-            await this.page.goto('https://automationexercise.com/login', { waitUntil: 'load', timeout: 120000 });
-        } catch (e) {
-            // Continuar incluso si hay timeout en goto
-        }
-        await this.acceptCookies();
+    async open() {
+        
+        await super.open('https://automationexercise.com/login');
+        await this.verifyLoaded();
+    }
+
+    async verifyLoaded(){
+        
+        await this.waitForVisible(this.loginTitle);
+
     }
 
     async login(

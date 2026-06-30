@@ -20,14 +20,9 @@ export class CartPage extends BasePage {
     
     }
 
-    async navigate() {
-        /*try {
-            await this.page.goto('https://automationexercise.com/', { waitUntil: 'load', timeout: 120000 });
-        } catch (e) {
-            // Continuar incluso si hay timeout en goto
-        }
-        await this.acceptCookies();*/
-        await this.cartLink.click();
+    async goToCart() {
+        await this.page.goto('https://automationexercise.com/view_cart', { waitUntil: 'load', timeout: 120000 });
+        await this.waitForVisible(this.cartTitle);
     }
 
     async removeFirstProduct() {

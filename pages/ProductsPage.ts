@@ -24,14 +24,18 @@ export class ProductsPage extends BasePage {
         
     }
 
-    async navigate() {
-        try {
-            await this.page.goto('https://automationexercise.com/', { waitUntil: 'load', timeout: 120000 });
-        } catch (e) {
-            // Continuar incluso si hay timeout en goto
-        }
-        await this.acceptCookies();
-        await this.productsLink.click();
+    async open() {
+        
+        await super.open('https://automationexercise.com/');
+        await this.goToProducts();
+
+    }
+
+    async goToProducts() {
+
+        await this.page.goto('https://automationexercise.com/products', { waitUntil: 'load' });
+        await this.verifyLoaded();
+
     }
 
     async getProductCount(): Promise<number> {
@@ -42,18 +46,35 @@ export class ProductsPage extends BasePage {
         return (await this.productCards.count()) > 0;
     }
 
-    async openFirstProduct() {
+    async verifyLoaded() {
+        await this.waitForVisible(this.productsTitle);
+    }
 
-        await this.viewProductButton.click();   
+    async openFirstProduct() {
+        const firstView = this.page.locator('a[href*="/product_details/"]').first();
+        const href = await firstView.getAttribute('href');
+        if (href) {
+            await this.page.goto(new URL(href, 'https://automationexercise.com').toString(), { waitUntil: 'load' });
+        } else {
+            await firstView.click();
+        }
+        // wait for product details to load
+        await this.page.waitForSelector('.product-information h2', { state: 'visible', timeout: 10000 });
     }
 
     async addToCartFirstProduct() {
         await this.productCards.first().hover();
         await this.addToCartButton.first().click();
+        await this.page.waitForSelector('button:has-text("Continue Shopping"), a:has-text("Continue Shopping")', { timeout: 10000 });
     }
 
     async closeAddToCartModal() {
         await this.continueShoppingButton.click();
+        try {
+            await this.page.waitForSelector('button:has-text("Continue Shopping"), a:has-text("Continue Shopping")', { state: 'hidden', timeout: 10000 });
+        } catch {
+            // continue button already hidden
+        }
     }
 
 }

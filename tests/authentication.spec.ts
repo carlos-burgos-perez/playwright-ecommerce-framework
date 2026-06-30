@@ -13,7 +13,7 @@ test.describe('Authentication', () => {
 
         const loginPage = new LoginPage(page);
 
-        await loginPage.navigate();
+        await loginPage.open();
 
         await expect(page).toHaveURL(/\/login/);
     });
@@ -22,7 +22,7 @@ test.describe('Authentication', () => {
 
         const loginPage = new LoginPage(page);
 
-        await loginPage.navigate();
+        await loginPage.open();
 
         await expect(loginPage.loginTitle).toBeVisible();
     });
@@ -31,7 +31,7 @@ test.describe('Authentication', () => {
 
         const loginPage = new LoginPage(page);
 
-        await loginPage.navigate();     
+        await loginPage.open();     
 
         await loginPage.login(
             users.invalidUser.email,
@@ -46,7 +46,7 @@ test.describe('Authentication', () => {
 
         const loginPage = new LoginPage(page);
 
-        await loginPage.navigate();
+        await loginPage.open();
 
         await loginPage.login(
             users.validUser.email,
@@ -65,7 +65,7 @@ test.describe('Authentication', () => {
 
         const email = `qa${Date.now()}@test.com`;
 
-        await loginPage.navigate();
+        await loginPage.open();
 
         await signupPage.startSignup(
             users.newUser.name,
