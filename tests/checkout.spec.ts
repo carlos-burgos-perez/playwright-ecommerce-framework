@@ -7,7 +7,7 @@ import { ProductsPage } from '../pages/ProductsPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 
-test.describe('Checkout Page', () => {
+test.describe('Checkout', () => {
 
     test ('should navigate successfully to checkout', async ({ page }) => {
 
@@ -18,13 +18,12 @@ test.describe('Checkout Page', () => {
 
         await loginPage.open();
         await loginPage.login(users.validUser.email, users.validUser.password);
-        await loginPage.page.waitForTimeout(1000);
-        await productsPage.open();
+        await productsPage.goToProducts();
         await productsPage.addToCartFirstProduct();
         await productsPage.closeAddToCartModal();
         await cartPage.goToCart();
         await checkoutPage.proceedToCheckout();
-        await checkoutPage.verifyCheckoutLoaded();
+        await checkoutPage.verifyLoaded();
     });
 });
 

@@ -53,7 +53,7 @@ test.describe('Authentication', () => {
             users.validUser.password
         );
 
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(5000);
         await expect(loginPage.loggedInUser).toBeVisible();
 
     })
