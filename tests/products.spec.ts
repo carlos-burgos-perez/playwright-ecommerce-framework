@@ -1,36 +1,29 @@
-import { test, expect } from '../fixtures/baseTest';
-
-import { ProductsPage } from '../pages/ProductsPage';
-import { ProductDetailsPage } from '../pages/ProductDetailsPage';
+import { test, expect } from '../fixtures/businessFixtures';
 
 test.describe('Products Page', () => {
 
-    test('should navigate to products page', async ({ productsPage }) => {
+    test('should navigate to products page', async ({ guestUser, productsPage }) => {
 
         await productsPage.open();
 
         await expect(productsPage.productsTitle).toBeVisible();
     });
 
-    test('should display products', async ({ productsPage }) => {
+    test('should display products', async ({ guestUser, productsPage }) => {
 
         await productsPage.open();
 
         await expect(productsPage.productCards.first()).toBeVisible();
     });
 
-    test('should display products list', async ({ productsPage }) => {
+    test('should display products list', async ({ guestUser, productsPage }) => {
 
         await productsPage.open();
 
-        const hasProducts = await productsPage.hasProducts();
-
-        expect(
-            await productsPage.hasProducts()
-        ).toBeTruthy();
+        expect(await productsPage.hasProducts()).toBeTruthy();
     });
 
-    test('should open product details page when clicking on a product', async ({ productsPage, productDetailsPage }) => {
+    test('should open product details page when clicking on a product', async ({ guestUser, productsPage, productDetailsPage }) => {
 
         await productsPage.open();
 

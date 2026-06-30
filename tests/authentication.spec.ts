@@ -1,11 +1,6 @@
-import { test, expect } from '../fixtures/baseTest';
+import { test, expect } from '../fixtures/businessFixtures';
 
 import users from '../fixtures/users.json';
-
-import { LoginPage } from '../pages/LoginPage';
-import { HomePage } from '../pages/HomePage';
-import { CookieBanner } from '../pages/components/CookieBanner';
-import { SignupPage } from '../pages/SignupPage';
 
 test.describe('Authentication', () => {
 
@@ -36,17 +31,9 @@ test.describe('Authentication', () => {
         await expect(loginPage.errorMessage).toBeVisible();
     });
 
-    test('should login successfully with valid credentials', async ({ page, loginPage }) => {
+    test('should login successfully with valid credentials', async ({ loggedUser }) => {
 
-        await loginPage.open();
-
-        await loginPage.login(
-            users.validUser.email,
-            users.validUser.password
-        );
-
-        await page.waitForTimeout(5000);
-        await expect(loginPage.loggedInUser).toBeVisible();
+        await expect(loggedUser.loggedInUser).toBeVisible();
 
     })
 

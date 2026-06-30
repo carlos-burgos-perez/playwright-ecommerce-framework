@@ -46,4 +46,11 @@ export class LoginPage extends BasePage {
         await this.passwordInput.fill(password);
         await this.loginButton.click(); 
     }
+
+    async verifyLoggedIn() {
+
+        await this.loggedInUser.waitFor({
+            state: 'visible'
+        });
+    }
 }
