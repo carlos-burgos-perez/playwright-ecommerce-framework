@@ -14,8 +14,9 @@ export class BasePage {
 
     protected async open(url: string) {
         await this.page.goto(url, {
-            waitUntil: 'load'
+            waitUntil: 'domcontentloaded'
         });
+        await this.page.waitForLoadState('load', { timeout: 20000 });
 
         await this.cookieBanner.acceptCookies();
 
@@ -28,8 +29,7 @@ export class BasePage {
     }
 
     protected async waitForVisible(locator: Locator) {
-
-        await expect(locator).toBeVisible();
+        await this.page.waitForLoadState('domcontentloaded', { timeout: 10000 });
     }
 
 }

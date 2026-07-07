@@ -26,6 +26,7 @@ const validUser = {
 
 type BusinessPages = {
     loggedUser: LoginPage;
+    authenticatedUser: LoginPage;
     guestUser: undefined;
     cartWithProduct: CartPage;
 };
@@ -42,6 +43,11 @@ export const test = base.extend<BusinessPages>({
 
         await loginPage.verifyLoggedIn();
         await use(loginPage);
+    },
+
+    authenticatedUser: async({ loginPage }, use) => {
+
+        await loginPage.verifyLoggedIn();
     },
 
     guestUser: async({}, use) => {

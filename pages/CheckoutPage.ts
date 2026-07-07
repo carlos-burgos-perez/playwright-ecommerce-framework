@@ -20,9 +20,10 @@ export class CheckoutPage extends BasePage {
     }
 
     async proceedToCheckout() {
-
+        await this.proceedToCheckoutButton.waitFor({ state: 'visible', timeout: 30000 });
+        await this.proceedToCheckoutButton.scrollIntoViewIfNeeded();
+        await this.proceedToCheckoutButton.click({ trial: true }).catch(() => undefined);
         await this.proceedToCheckoutButton.click();
-
     }
 
     async verifyLoaded() {
