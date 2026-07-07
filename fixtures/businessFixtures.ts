@@ -1,7 +1,9 @@
 import { CartPage } from '../pages/CartPage';
 import { LoginPage } from '../pages/LoginPage';
+import { UserFactory } from '../factories/UserFactory';
 import { test as  base } from './baseTest';
-import users from './users.json';
+
+const validUser = UserFactory.registered();
 
 type BusinessPages = {
     loggedUser: LoginPage;
@@ -15,8 +17,8 @@ export const test = base.extend<BusinessPages>({
 
         await loginPage.open();
         await loginPage.login(
-            users.validUser.email,
-            users.validUser.password
+            validUser.email,
+            validUser.password
         );
 
         await loginPage.verifyLoggedIn();

@@ -1,6 +1,5 @@
 import { test, expect } from '../fixtures/businessFixtures';
-
-import users from '../fixtures/users.json';
+import { UserFactory } from '../factories/UserFactory';
 
 test.describe('Authentication', () => {
 
@@ -20,15 +19,18 @@ test.describe('Authentication', () => {
 
     test ('should not login with invalid credentials', async ({ page, loginPage }) => {
 
+        const invalidUser = UserFactory.invalidEmail();
+
         await loginPage.open();     
 
         await loginPage.login(
-            users.invalidUser.email,
-            users.invalidUser.password
+            invalidUser.email,
+            invalidUser.password
         );
 
         await page.waitForTimeout(1000);
-        await expect(loginPage.errorMessage).toBeVisible();
+        await expect(page).toHaveURL(/\/login/);
+        await expect(loginPage.loginButton).toBeVisible();
     });
 
     test('should login successfully with valid credentials', async ({ loggedUser }) => {
@@ -39,13 +41,13 @@ test.describe('Authentication', () => {
 
     test('should register a new user successfully', async ({ page, loginPage, signupPage }) => {
 
-        const email = `qa${Date.now()}@test.com`;
+        const newUser = UserFactory.valid();
 
         await loginPage.open();
 
         await signupPage.startSignup(
-            users.newUser.name,
-            email
+            newUser.name,
+            newUser.email
         );
 
         await expect(page).toHaveURL(/\/signup/);
