@@ -1,14 +1,27 @@
-import 'dotenv/config';
-
 import { CartPage } from '../pages/CartPage';
 import { LoginPage } from '../pages/LoginPage';
 import { UserFactory } from '../factories/UserFactory';
+import { Environment } from '../config/Environment';
 import { test as  base } from './baseTest';
 
+const registeredUser = UserFactory.registered();
+
+const normalizeEnvValue = (value: string | undefined, fallback: string) => {
+    const trimmedValue = value?.trim();
+
+    if (!trimmedValue) {
+        return fallback;
+    }
+
+    const placeholderValues = ['your-email@test.com', 'your-email', 'your-password'];
+
+    return placeholderValues.includes(trimmedValue.toLowerCase()) ? fallback : trimmedValue;
+};
+
 const validUser = {
-    ...UserFactory.registered(),
-    email: process.env.VALID_EMAIL?.trim() || UserFactory.registered().email,
-    password: process.env.VALID_PASSWORD?.trim() || UserFactory.registered().password
+    ...registeredUser,
+    email: normalizeEnvValue(Environment.validEmail, registeredUser.email),
+    password: normalizeEnvValue(Environment.validPassword, registeredUser.password)
 };
 
 type BusinessPages = {
