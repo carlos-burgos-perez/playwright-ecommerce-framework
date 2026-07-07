@@ -2,6 +2,8 @@ import { Locator, Page } from '@playwright/test';
 
 import { BasePage } from './BasePage';
 
+import { Environment } from '../config/Environment';
+
 export class ProductsPage extends BasePage {
 
     readonly productsLink: Locator;
@@ -26,7 +28,7 @@ export class ProductsPage extends BasePage {
 
     async open() {
         
-        await super.open('https://automationexercise.com/');
+        await super.open(`${Environment.baseUrl}/products`);
         await this.goToProducts();
 
     }

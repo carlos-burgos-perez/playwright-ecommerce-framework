@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test';
 
 import { BasePage } from './BasePage';
 
+import { Environment } from '../config/Environment';
 export class CartPage extends BasePage {
 
     readonly cartLink: Locator;
@@ -21,7 +22,7 @@ export class CartPage extends BasePage {
     }
 
     async goToCart() {
-        await this.page.goto('https://automationexercise.com/view_cart', { waitUntil: 'load', timeout: 120000 });
+        await super.open(`${Environment.baseUrl}/view_cart`);
         await this.waitForVisible(this.cartTitle);
     }
 

@@ -1,9 +1,15 @@
+import 'dotenv/config';
+
 import { CartPage } from '../pages/CartPage';
 import { LoginPage } from '../pages/LoginPage';
 import { UserFactory } from '../factories/UserFactory';
 import { test as  base } from './baseTest';
 
-const validUser = UserFactory.registered();
+const validUser = {
+    ...UserFactory.registered(),
+    email: process.env.VALID_EMAIL?.trim() || UserFactory.registered().email,
+    password: process.env.VALID_PASSWORD?.trim() || UserFactory.registered().password
+};
 
 type BusinessPages = {
     loggedUser: LoginPage;

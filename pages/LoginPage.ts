@@ -1,6 +1,8 @@
 import { Page, Locator } from '@playwright/test';
 
 import { BasePage } from './BasePage';
+
+import { Environment } from '../config/Environment';
 export class LoginPage extends BasePage {
 
     readonly page: Page;
@@ -28,7 +30,7 @@ export class LoginPage extends BasePage {
 
     async open() {
         
-        await super.open('https://automationexercise.com/login');
+        await super.open(`${Environment.baseUrl}/login`);
         await this.verifyLoaded();
     }
 
