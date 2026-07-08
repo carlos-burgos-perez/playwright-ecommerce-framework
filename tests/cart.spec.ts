@@ -1,9 +1,9 @@
 import { test, expect } from '../fixtures/businessFixtures';
 
 
-test.describe('Cart Page', () => {
+test.describe('@Cart', () => {
 
-    test('should add product to cart', async ({ loggedUser, productsPage, cartPage }) => {
+    test('@critical @smoke should add product to cart', async ({ loggedUser, productsPage, cartPage }) => {
 
         await productsPage.goToProducts();
         await productsPage.addToCartFirstProduct();
@@ -11,7 +11,7 @@ test.describe('Cart Page', () => {
 
     });
 
-    test('should remove product from cart', async ({ cartWithProduct }) => {
+    test('@regression should remove product from cart', async ({ cartWithProduct }) => {
 
         await cartWithProduct.removeFirstProduct();
 

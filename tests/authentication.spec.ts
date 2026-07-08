@@ -1,23 +1,23 @@
 import { test, expect } from '../fixtures/businessFixtures';
 import { UserFactory } from '../factories/UserFactory';
 
-test.describe('Authentication', () => {
+test.describe('@Authentication', () => {
 
-    test('should navigate to login page', async ({ page, loginPage }) => {
+    test('@smoke should navigate to login page', async ({ page, loginPage }) => {
 
         await loginPage.open();
 
         await expect(page).toHaveURL(/\/login/);
     });
 
-    test('should display login form', async ({ loginPage }) => {
+    test('@regression should display login form', async ({ loginPage }) => {
 
         await loginPage.open();
 
         await expect(loginPage.loginTitle).toBeVisible();
     });
 
-    test ('should not login with invalid credentials', async ({ page, loginPage }) => {
+    test('@critical should not login with invalid credentials', async ({ page, loginPage }) => {
 
         const invalidUser = UserFactory.invalidEmail();
 
@@ -33,13 +33,13 @@ test.describe('Authentication', () => {
         await expect(loginPage.loginButton).toBeVisible();
     });
 
-    test('should login successfully with valid credentials', async ({ loggedUser }) => {
+    test('@critical @smoke should login successfully with valid credentials', async ({ loggedUser }) => {
 
         await expect(loggedUser.loggedInUser).toBeVisible();
 
     })
 
-    test('should register a new user successfully', async ({ page, loginPage, signupPage }) => {
+    test('@critical should register a new user successfully', async ({ page, loginPage, signupPage }) => {
 
         const newUser = UserFactory.valid();
 
