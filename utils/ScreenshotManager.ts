@@ -1,4 +1,5 @@
 import { Page, TestInfo } from '@playwright/test';
+import * as allure from 'allure-js-commons';
 import { Logger } from './Logger';
 
 export class ScreenshotManager {
@@ -6,19 +7,14 @@ export class ScreenshotManager {
     static async captureScreenshot(page: Page, testInfo: TestInfo) {
 
         if (testInfo.status !== testInfo.expectedStatus) {
-
             return;
-
         }
 
-        const fileName = `${testInfo.project.name}_${testInfo.title.replace(/\s+/g, '_')}.png`;
-
-        try{
-            await page.screenshot({ path: `artifacts/screenshots/${testInfo.project.name}/${fileName}`, fullPage: true });
+        try {
+            await allure.attachment('Screenshot', await page.screenshot(), 'image/png');
         }
         catch {
             Logger.warning('Unable to capture screenshot');
-        };
-
+        }
     }
 }

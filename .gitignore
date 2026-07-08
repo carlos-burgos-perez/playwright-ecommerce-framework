@@ -8,3 +8,7 @@ node_modules/
 /playwright/.auth/
 .env
 playwright/.auth/
+
+# Allure
+allure-results/
+allure-report/
