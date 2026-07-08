@@ -1,11 +1,11 @@
 import { test as base } from '@playwright/test';
 
-import { LoginPage } from '../pages/LoginPage';
-import { SignupPage } from '../pages/SignupPage';
-import { ProductsPage } from '../pages/ProductsPage';
-import { ProductDetailsPage } from '../pages/ProductDetailsPage';
-import { CartPage } from '../pages/CartPage';
-import { CheckoutPage } from '../pages/CheckoutPage';
+import { LoginPage } from '../../pages/LoginPage';
+import { SignupPage } from '../../pages/SignupPage';
+import { ProductsPage } from '../../pages/ProductsPage';
+import { ProductDetailsPage } from '../../pages/ProductDetailsPage';
+import { CartPage } from '../../pages/CartPage';
+import { CheckoutPage } from '../../pages/CheckoutPage';
 
 type Pages = {
 

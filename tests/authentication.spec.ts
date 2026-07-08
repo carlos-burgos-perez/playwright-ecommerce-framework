@@ -1,4 +1,4 @@
-import { test, expect } from '../fixtures/businessFixtures';
+import { test, expect } from '../core/fixtures/businessFixtures';
 import { UserFactory } from '../factories/UserFactory';
 import * as allure from 'allure-js-commons';
 

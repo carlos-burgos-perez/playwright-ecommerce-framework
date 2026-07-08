@@ -2,7 +2,7 @@ import { Locator, Page } from '@playwright/test';
 
 import { BasePage } from './BasePage';
 
-import { Environment } from '../config/Environment';
+import { Environment } from '../core/config/Environment';
 export class CartPage extends BasePage {
 
     readonly cartLink: Locator;

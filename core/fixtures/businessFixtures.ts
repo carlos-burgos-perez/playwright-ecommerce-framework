@@ -1,6 +1,6 @@
-import { CartPage } from '../pages/CartPage';
-import { LoginPage } from '../pages/LoginPage';
-import { UserFactory } from '../factories/UserFactory';
+import { CartPage } from '../../pages/CartPage';
+import { LoginPage } from '../../pages/LoginPage';
+import { UserFactory } from '../../factories/UserFactory';
 import { Environment } from '../config/Environment';
 import { test as  base } from './baseTest';
 

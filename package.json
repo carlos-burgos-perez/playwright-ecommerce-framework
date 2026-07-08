@@ -13,10 +13,9 @@
     "test:ci:debug": "npx playwright test --debug --reporter=dot",
     "test:ci:report": "npx playwright show-report --reporter=dot",
     "test:allure": "npx playwright test --reporter=list,allure-playwright",
-
     "allure:generate": "allure generate ./allure-results --clean",
     "allure:open": "allure open ./allure-report",
-    "allure": "allure serve ./allure-results"
+    "allure:serve": "allure serve ./allure-results"
   },
   "repository": {
     "type": "git",

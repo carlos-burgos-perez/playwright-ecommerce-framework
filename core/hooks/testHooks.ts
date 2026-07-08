@@ -1,7 +1,7 @@
 import { test } from '../fixtures/baseTest';
-import { Logger } from '../utils/Logger';
-import { ScreenshotManager } from '../utils/ScreenshotManager';
-import { TraceManager } from '../utils/TraceManager';
+import { Logger } from '../../utils/Logger';
+import { ScreenshotManager } from '../../utils/ScreenshotManager';
+import { TraceManager } from '../../utils/TraceManager';
 
 test.beforeEach(async ({}, testInfo) => {
     

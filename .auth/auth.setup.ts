@@ -2,7 +2,7 @@ import { mkdirSync } from 'fs';
 import { test as setup } from '@playwright/test';
 
 import { LoginPage } from '../pages/LoginPage';
-import { Environment } from '../config/Environment';
+import { Environment } from '../core/config/Environment';
 import { UserFactory } from '../factories/UserFactory';
 
 const registeredUser = UserFactory.registered();
