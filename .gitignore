@@ -6,8 +6,12 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Environment variables
 .env
-playwright/.auth/
+.env.local
+.env.qa
+.env.prod
 
 # Screenshots
 artifacts/

@@ -12,6 +12,11 @@
     "test:ci:headed": "npx playwright test --headed --reporter=dot",
     "test:ci:debug": "npx playwright test --debug --reporter=dot",
     "test:ci:report": "npx playwright show-report --reporter=dot",
+
+    "test:local": "cross-env TEST_ENV=local npx playwright test",
+    "test:qa": "cross-env TEST_ENV=qa npx playwright test",
+    "test:prod": "cross-env TEST_ENV=prod npx playwright test",
+
     "test:allure": "npx playwright test --reporter=list,allure-playwright",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
@@ -35,6 +40,7 @@
     "@types/node": "^25.9.3",
     "allure-commandline": "^2.43.0",
     "allure-playwright": "^3.10.2",
+    "cross-env": "^10.1.0",
     "typescript": "^6.0.3"
   },
   "dependencies": {

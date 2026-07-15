@@ -2,6 +2,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+export enum EnvironmentType {
+    LOCAL = 'LOCAL',
+    QA = 'QA',
+    PRODUCTION = 'PRODUCTION'
+}
 export class Environment {
 
     static readonly baseUrl = process.env.BASE_URL;

@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { Environment } from './core/config/Environment';
-
+import { EnvironmentManager } from './core/config/EnvironmentManager';
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -12,6 +12,7 @@ import { Environment } from './core/config/Environment';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+EnvironmentManager.load();
 export default defineConfig({
   testDir: '.',
   /* Run tests in files in parallel */
@@ -31,8 +32,9 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: Environment.baseUrl,
-
+    baseURL: process.env.BASE_URL,
+    headless: process.env.HEADLESS === 'true',
+    
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     actionTimeout: 120000,

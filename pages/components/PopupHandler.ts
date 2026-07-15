@@ -23,7 +23,7 @@ export class PopupHandler {
                     await button.first().click();
                 }
             } catch (e) {
-                // Ignorar errores si el botón no está presente o no es visible
+                // Error beeing ignored if the button is not present or not visible
             }       
         }
     }
