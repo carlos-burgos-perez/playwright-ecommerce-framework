@@ -2,12 +2,12 @@ import { test, expect } from '../core/fixtures/businessFixtures';
 import { UserFactory } from '../factories/UserFactory';
 import * as allure from 'allure-js-commons';
 import { StepHelper } from '../utils/StepHelper';
+import { AllureManager } from '../utils/AllureManager';
 
 test.describe('@Authentication', () => {
 
     test.beforeEach(async () => {
-        await allure.feature('Authentication');
-        await allure.story('Login');
+        await AllureManager.configureTest({ owner: 'carlos-burgos-perez', feature: 'Authentication', story: 'Login' });
         await allure.tag('authentication');
     });
 

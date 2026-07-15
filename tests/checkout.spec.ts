@@ -1,14 +1,14 @@
 import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
 import { StepHelper } from '../utils/StepHelper';
+import { AllureManager } from '../utils/AllureManager';
 
 import { CheckoutPage } from '../pages/CheckoutPage';
 
 test.describe('@Checkout', () => {
 
     test.beforeEach(async () => {
-        await allure.feature('Checkout');
-        await allure.story('Checkout flow');
+        await AllureManager.configureTest({ owner: 'carlos-burgos-perez', feature: 'Checkout', story: 'Checkout flow' });
         await allure.tag('checkout');
     });
 

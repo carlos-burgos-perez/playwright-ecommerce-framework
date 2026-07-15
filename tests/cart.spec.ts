@@ -1,13 +1,13 @@
 import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
 import { StepHelper } from '../utils/StepHelper';
+import { AllureManager } from '../utils/AllureManager';
 
 
 test.describe('@Cart', () => {
 
     test.beforeEach(async () => {
-        await allure.feature('Cart');
-        await allure.story('Cart management');
+        await AllureManager.configureTest({ owner: 'carlos-burgos-perez', feature: 'Cart', story: 'Cart management' });
         await allure.tag('cart');
     });
 
