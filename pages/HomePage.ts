@@ -1,5 +1,4 @@
 import {Page, Locator } from '@playwright/test';
-import { CookieBanner } from './components/CookieBanner';
 
 export class HomePage {
 

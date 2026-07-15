@@ -1,5 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
-import { Environment } from './core/config/Environment';
+import { defineConfig } from '@playwright/test';
 import { EnvironmentManager } from './core/config/EnvironmentManager';
 /**
  * Read environment variables from file.

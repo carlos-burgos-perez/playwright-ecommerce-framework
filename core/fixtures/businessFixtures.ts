@@ -46,11 +46,11 @@ export const test = base.extend<BusinessPages>({
     },
 
     authenticatedUser: async({ loginPage }, use) => {
-
         await loginPage.verifyLoggedIn();
+        await use(loginPage);
     },
 
-    guestUser: async({}, use) => {
+    guestUser: async(_, use) => {
 
         // Intentionally empty.
         // Each Playwright test starts with a clean browser context.
@@ -58,7 +58,7 @@ export const test = base.extend<BusinessPages>({
         await use(undefined);
     },
 
-    cartWithProduct: async({ loggedUser, productsPage, cartPage }, use) => {
+    cartWithProduct: async({ productsPage, cartPage }, use) => {
 
         await productsPage.goToProducts();
         await productsPage.addToCartFirstProduct();

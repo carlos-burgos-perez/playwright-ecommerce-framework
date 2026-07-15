@@ -9,7 +9,7 @@ export class Logger {
     private static attach(level: string, message: string) {
         try {
             allure.attachment(`Log - ${level}`, message, 'text/plain');
-        } catch (e) {
+        } catch {
             // ignore allure attachment errors
         }
     }

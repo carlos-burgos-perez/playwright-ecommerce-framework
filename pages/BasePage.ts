@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 import { CookieBanner } from './components/CookieBanner';
 
@@ -29,7 +29,7 @@ export class BasePage {
     }
 
     protected async waitForVisible(locator: Locator) {
-        await this.page.waitForLoadState('domcontentloaded', { timeout: 10000 });
+        await locator.waitFor({ state: 'visible', timeout: 10000 });
     }
 
 }

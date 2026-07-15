@@ -22,7 +22,7 @@ export class PopupHandler {
                 if (await button.first().isVisible({ timeout: 2000 })) {
                     await button.first().click();
                 }
-            } catch (e) {
+            } catch {
                 // Error beeing ignored if the button is not present or not visible
             }       
         }

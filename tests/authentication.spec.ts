@@ -64,9 +64,8 @@ test.describe('@Authentication', () => {
         });
 
         await StepHelper.run('Verify the error state is preserved', async () => {
-            await page.waitForTimeout(1000);
             await expect(page).toHaveURL(/\/login/);
-            await expect(loginPage.loginButton).toBeVisible();
+            await expect(loginPage.loginButton).toBeVisible({ timeout: 2000 });
         });
     });
 

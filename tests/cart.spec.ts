@@ -17,7 +17,7 @@ test.describe('@Cart', () => {
         await allure.tag('cart');
     });
 
-    test('@critical @smoke should add product to cart', async ({ loggedUser, productsPage, cartPage }) => {
+    test('@critical @smoke should add product to cart', async ({ productsPage, cartPage }) => {
         await allure.severity('critical');
         await allure.tag('smoke');
 
@@ -31,6 +31,9 @@ test.describe('@Cart', () => {
 
         await StepHelper.run('Open the cart page', async () => {
             await cartPage.goToCart();
+        });
+        await StepHelper.run('Verify the cart page shows the cart table', async () => {
+            await expect(cartPage.cartTitle).toBeVisible();
         });
     });
 

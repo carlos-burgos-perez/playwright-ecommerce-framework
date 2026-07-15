@@ -17,7 +17,7 @@ test.describe('@Products', () => {
         await allure.tag('products');
     });
 
-    test('@smoke should navigate to products page', async ({ guestUser, productsPage }) => {
+    test('@smoke should navigate to products page', async ({ productsPage }) => {
         await allure.severity('critical');
         await allure.tag('smoke');
 
@@ -30,7 +30,7 @@ test.describe('@Products', () => {
         });
     });
 
-    test('@regression should display products', async ({ guestUser, productsPage }) => {
+    test('@regression should display products', async ({ productsPage }) => {
         await allure.severity('normal');
         await allure.tag('regression');
 
@@ -43,7 +43,7 @@ test.describe('@Products', () => {
         });
     });
 
-    test('@regression should display products list', async ({ guestUser, productsPage }) => {
+    test('@regression should display products list', async ({ productsPage }) => {
         await allure.severity('normal');
         await allure.tag('regression');
 
@@ -56,7 +56,7 @@ test.describe('@Products', () => {
         });
     });
 
-    test('@critical should open product details page when clicking on a product', async ({ guestUser, productsPage, productDetailsPage }) => {
+    test('@critical should open product details page when clicking on a product', async ({ productsPage, productDetailsPage }) => {
         await allure.severity('critical');
         await allure.tag('critical');
 
