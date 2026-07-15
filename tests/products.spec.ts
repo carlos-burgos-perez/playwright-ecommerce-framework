@@ -1,5 +1,6 @@
 import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
+import { StepHelper } from '../utils/StepHelper';
 
 test.describe('@Products', () => {
 
@@ -13,11 +14,11 @@ test.describe('@Products', () => {
         await allure.severity('critical');
         await allure.tag('smoke');
 
-        await allure.step('Open the products page', async () => {
+        await StepHelper.run('Open the products page', async () => {
             await productsPage.open();
         });
 
-        await allure.step('Verify the products title is visible', async () => {
+        await StepHelper.run('Verify the products title is visible', async () => {
             await expect(productsPage.productsTitle).toBeVisible();
         });
     });
@@ -26,11 +27,11 @@ test.describe('@Products', () => {
         await allure.severity('normal');
         await allure.tag('regression');
 
-        await allure.step('Open the products page', async () => {
+        await StepHelper.run('Open the products page', async () => {
             await productsPage.open();
         });
 
-        await allure.step('Verify product cards are visible', async () => {
+        await StepHelper.run('Verify product cards are visible', async () => {
             await expect(productsPage.productCards.first()).toBeVisible();
         });
     });
@@ -39,11 +40,11 @@ test.describe('@Products', () => {
         await allure.severity('normal');
         await allure.tag('regression');
 
-        await allure.step('Open the products page', async () => {
+        await StepHelper.run('Open the products page', async () => {
             await productsPage.open();
         });
 
-        await allure.step('Verify the products list is populated', async () => {
+        await StepHelper.run('Verify the products list is populated', async () => {
             expect(await productsPage.hasProducts()).toBeTruthy();
         });
     });
@@ -52,15 +53,15 @@ test.describe('@Products', () => {
         await allure.severity('critical');
         await allure.tag('critical');
 
-        await allure.step('Open the products page', async () => {
+        await StepHelper.run('Open the products page', async () => {
             await productsPage.open();
         });
 
-        await allure.step('Open the first product details page', async () => {
+        await StepHelper.run('Open the first product details page', async () => {
             await productsPage.openFirstProduct();
         });
 
-        await allure.step('Verify the product details page is displayed', async () => {
+        await StepHelper.run('Verify the product details page is displayed', async () => {
             await expect(productDetailsPage.productName).toBeVisible();
         });
     });

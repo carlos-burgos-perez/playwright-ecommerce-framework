@@ -1,5 +1,6 @@
 import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
+import { StepHelper } from '../utils/StepHelper';
 
 import { CheckoutPage } from '../pages/CheckoutPage';
 
@@ -15,11 +16,11 @@ test.describe('@Checkout', () => {
         await allure.severity('critical');
         await allure.tag('smoke');
 
-        await allure.step('Proceed to checkout', async () => {
+        await StepHelper.run('Proceed to checkout', async () => {
             await checkoutPage.proceedToCheckout();
         });
 
-        await allure.step('Verify the checkout page is loaded', async () => {
+        await StepHelper.run('Verify the checkout page is loaded', async () => {
             await checkoutPage.verifyLoaded();
         });
     });

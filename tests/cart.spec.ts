@@ -1,5 +1,6 @@
 import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
+import { StepHelper } from '../utils/StepHelper';
 
 
 test.describe('@Cart', () => {
@@ -14,15 +15,15 @@ test.describe('@Cart', () => {
         await allure.severity('critical');
         await allure.tag('smoke');
 
-        await allure.step('Open the products page', async () => {
+        await StepHelper.run('Open the products page', async () => {
             await productsPage.goToProducts();
         });
 
-        await allure.step('Add the first product to the cart', async () => {
+        await StepHelper.run('Add the first product to the cart', async () => {
             await productsPage.addToCartFirstProduct();
         });
 
-        await allure.step('Open the cart page', async () => {
+        await StepHelper.run('Open the cart page', async () => {
             await cartPage.goToCart();
         });
     });
@@ -31,11 +32,11 @@ test.describe('@Cart', () => {
         await allure.severity('normal');
         await allure.tag('regression');
 
-        await allure.step('Remove the first product from the cart', async () => {
+        await StepHelper.run('Remove the first product from the cart', async () => {
             await cartWithProduct.removeFirstProduct();
         });
 
-        await allure.step('Verify the empty cart message is shown', async () => {
+        await StepHelper.run('Verify the empty cart message is shown', async () => {
             await expect(cartWithProduct.emptyCartMessage).toBeVisible();
         });
     });
