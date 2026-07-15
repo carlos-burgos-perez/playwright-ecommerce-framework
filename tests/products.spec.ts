@@ -2,11 +2,18 @@ import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
 import { StepHelper } from '../utils/StepHelper';
 import { AllureManager } from '../utils/AllureManager';
+import { Features } from '../utils/metadata/features';
+import { Severities } from '../utils/metadata/severities';
 
 test.describe('@Products', () => {
 
     test.beforeEach(async () => {
-        await AllureManager.configureTest({ owner: 'carlos-burgos-perez', feature: 'Products', story: 'Product browsing' });
+        await AllureManager.configureTest({ 
+            owner: 'carlos-burgos-perez', 
+            feature: Features.Products, 
+            story: 'Product browsing',
+            severity: Severities.Critical
+        });
         await allure.tag('products');
     });
 

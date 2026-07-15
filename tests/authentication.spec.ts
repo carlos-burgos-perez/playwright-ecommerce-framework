@@ -3,11 +3,20 @@ import { UserFactory } from '../factories/UserFactory';
 import * as allure from 'allure-js-commons';
 import { StepHelper } from '../utils/StepHelper';
 import { AllureManager } from '../utils/AllureManager';
+import { Features } from '../utils/metadata/features';
+import { Severities } from '../utils/metadata/severities';
 
 test.describe('@Authentication', () => {
 
     test.beforeEach(async () => {
-        await AllureManager.configureTest({ owner: 'carlos-burgos-perez', feature: 'Authentication', story: 'Login' });
+        await AllureManager.configureTest({ 
+            owner: 'carlos-burgos-perez', 
+            feature: Features.Authentication, 
+            story: 'Login',
+            severity: Severities.Critical,
+            description: 'Tests related to user authentication, including login and registration flows.'
+        });
+
         await allure.tag('authentication');
     });
 

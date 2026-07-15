@@ -2,12 +2,18 @@ import { test, expect } from '../core/fixtures/businessFixtures';
 import * as allure from 'allure-js-commons';
 import { StepHelper } from '../utils/StepHelper';
 import { AllureManager } from '../utils/AllureManager';
-
+import { Features } from '../utils/metadata/features';
+import { Severities } from '../utils/metadata/severities';
 
 test.describe('@Cart', () => {
 
     test.beforeEach(async () => {
-        await AllureManager.configureTest({ owner: 'carlos-burgos-perez', feature: 'Cart', story: 'Cart management' });
+        await AllureManager.configureTest({ 
+            owner: 'carlos-burgos-perez', 
+            feature: Features.Cart, 
+            story: 'Cart management',
+            severity: Severities.Critical
+        });
         await allure.tag('cart');
     });
 
