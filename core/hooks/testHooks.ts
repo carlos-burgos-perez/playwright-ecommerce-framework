@@ -10,11 +10,8 @@ test.beforeEach(async ({}, testInfo) => {
 });
 
 test.afterEach(async ({ page }, testInfo) => {
-
-    await ScreenshotManager.captureScreenshot(page, testInfo);
-
-    await TraceManager.saveTrace(testInfo);
     
-    Logger.success(`Finished "${testInfo.title}" (${testInfo.status})`);
-
+    if (testInfo.status !== testInfo.expectedStatus) {
+        await ScreenshotManager.captureScreenshot(page, `failure-${testInfo.title.replace(/\s+/g, '_')}`);
+    }
 });

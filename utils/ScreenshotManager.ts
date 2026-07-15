@@ -1,20 +1,29 @@
 import { Page, TestInfo } from '@playwright/test';
 import * as allure from 'allure-js-commons';
 import { Logger } from './Logger';
-
 export class ScreenshotManager {
 
-    static async captureScreenshot(page: Page, testInfo: TestInfo) {
+    static async captureScreenshot(
 
-        if (testInfo.status !== testInfo.expectedStatus) {
-            return;
-        }
+        page: Page, 
+        name: string
 
-        try {
-            await allure.attachment('Screenshot', await page.screenshot(), 'image/png');
-        }
-        catch {
-            Logger.warning('Unable to capture screenshot');
-        }
+    ): Promise<void> {
+
+        const screenshot = await page.screenshot({
+
+            path: `screenshots/${name}.png`,
+            fullPage: true,
+            type: 'png'
+
+        });
+
+        await allure.attachment(
+            name, 
+            screenshot, 
+            {
+                contentType: 'image/png'
+            }
+        );
     }
 }
